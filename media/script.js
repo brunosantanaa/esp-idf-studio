@@ -1,9 +1,9 @@
 const vscode = acquireVsCodeApi();
-		
+
 function configurePin(pin) {
     vscode.postMessage({
-    command: 'configurePin',
-    pin: pin
+        command: 'configurePin',
+        pin: pin
     });
 }
 
@@ -13,7 +13,7 @@ const ZOOM_STEP = 0.1;
 const MIN_ZOOM = 0.5;
 const MAX_ZOOM = 3;
 
-const content = document.querySelector('.esp-board');
+const content = document.querySelector('.chip-container');
 const zoomLevel = document.querySelector('.zoom-level');
 
 function updateZoom() {
@@ -43,15 +43,12 @@ function resetZoom() {
 // Adiciona o evento de scroll do mouse
 content.addEventListener('wheel', (event) => {
     event.preventDefault();
-    if (event.ctrlKey || event.metaKey) {
-        if (event.deltaY < 0) {
-            zoomIn();
-        } else {
-            zoomOut();
-        }
-        return;
+    if (event.deltaY < 0) {
+        zoomIn();
+    } else {
+        zoomOut();
     }
-    
+
     const scrollSpeed = 0.5;
     content.scrollTop += event.deltaY * scrollSpeed;
 }, { passive: false });

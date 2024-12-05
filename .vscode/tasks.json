@@ -6,7 +6,24 @@
 		{
 			"type": "npm",
 			"script": "watch",
-			"problemMatcher": "$ts-watch",
+			"problemMatcher": [
+				"$tsc-watch",
+				{
+					"pattern": [
+						{
+							"regexp": ".",
+							"file": 1,
+							"location": 2,
+							"message": 3
+						}
+					],
+					"background": {
+						"activeOnStart": true,
+						"beginsPattern": "^.*webpack .* compiled successfully.*",
+						"endsPattern": "^.*webpack .* compiled successfully.*"
+					}
+				}
+			],
 			"isBackground": true,
 			"presentation": {
 				"reveal": "never",

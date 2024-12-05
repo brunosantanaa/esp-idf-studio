@@ -1,17 +1,24 @@
-* { margin: 0; padding: 0;}
+* {
+    margin: 0;
+    padding: 0;
+}
+
 :root {
     --board-color: rgb(51, 51, 51);
     --board-color-sec: rgb(80, 80, 80);
-    --pin-color: rgb(190, 190, 190);;
+    --pin-color: rgb(190, 190, 190);
     --pin-color-gold: rgb(238, 197, 17);
     --shild-color: rgb(207, 207, 207);
-    --text-color: rgb(50,50,50);
+    --text-color: rgb(50, 50, 50);
 }
-html, body {
+
+html,
+body {
     height: 100%;
     width: 100%;
     overflow: hidden;
 }
+
 .main-container {
     display: flex;
     align-items: center;
@@ -32,25 +39,30 @@ html, body {
     min-width: 0;
     width: 100%;
 }
+
 .esp-board {
     background-color: var(--board-color);
     width: 150px;
-    height: 185px;
+    padding: 2px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    padding-bottom: 4px;
 }
+
 .esp-shild {
     margin-top: 4px;
-    width: 140px;
-    height: 125px;
+    max-width: 140px;
+    min-height: 120px;
     background-color: var(--shild-color);
     border-radius: 2px;
     display: flex;
     flex: 1;
+    width: 100%;
+    margin-bottom: 2px;
 }
+
 .esp-logo {
     padding: 10px;
     display: flex;
@@ -60,10 +72,12 @@ html, body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     flex: 1;
 }
+
 .esp-logo img {
     width: 110px;
     padding-bottom: 10px;
 }
+
 .esp-model {
     display: flex;
     flex: 1;
@@ -75,61 +89,125 @@ html, body {
     color: var(--text-color);
     margin-bottom: 10px;
 }
-.esp-board-pins-container{
+
+.board-support-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.esp-board-pins-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 2px;
 }
-.esp-board-bottom-pins{
+
+.esp-board-bottom-pins {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     margin-top: 2px;
-    gap: 2px
+    gap: 2px;
+    margin-top: -3px;
 }
+
 .esp-pin-container {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     gap: 2px;
+    padding-top: 34px;
 }
+
 .esp-pin-container-r {
-    margin-left: 2px;
+    align-items: start;
+    margin-left: -5px;
 }
+
 .esp-pin-container-l {
-    margin-right: 2px;
+    z-index: 0;
+    align-items: end;
+    margin-right: -5px;
 }
+
+.esp-pin-desc {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    text-align: center;
+    align-items: center;
+}
+
+.esp-pin-lable {
+    color: var(--pin-color);
+    font-size: 4px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.esp-pin-lable-bottom {
+    transform: rotate(-90deg);
+}
+
+.esp-pin-desc-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    text-orientation: sideways-right;
+}
+
 .esp-pin {
     cursor: pointer;
     background-color: var(--pin-color-gold);
 }
-.esp-pin-hor{
+
+.esp-pin-gnd {
+    background-color: black;
+}
+
+
+.esp-pin-vcc {
+    background-color: red;
+}
+
+
+.esp-pin-sp {
+    background-color: var(--pin-color);
+}
+
+.esp-pin-hor {
     width: 4px;
     height: 8px;
 }
-.esp-pin-ver{
+
+.esp-pin-ver {
     width: 8px;
     height: 4px;
 }
 
 
 .esp-antenna {
-    padding-top: 6px;
+    padding-top: 4px;
 }
+
 .esp-antenna-draw {
     border-collapse: collapse;
     background-color: var(--board-color);
 }
+
 .esp-antenna-draw-column {
     min-width: 20px;
     height: 20px;
     background-color: var(--board-color);
 }
-   /* Bordas superiores */
+
+/* Bordas superiores */
 .atn-top-border {
     border-top: 4px solid var(--board-color-sec);
 }
@@ -156,6 +234,7 @@ html, body {
     overflow: auto;
     width: 100%;
 }
+
 button {
     cursor: pointer;
     border-radius: 50%;

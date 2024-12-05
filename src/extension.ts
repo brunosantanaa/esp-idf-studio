@@ -61,7 +61,7 @@ class Esp32Panel {
 	private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
 		this._panel = panel;
 		this._extensionUri = extensionUri;
-		this._panel.webview.html = this._getHtmlForWebview();
+		this._panel.webview.html = gen_html.genChipRepresentation(esp.SupportedESP.ESP32_C3, this._extensionUri, this._panel);
 
 		// Limpe os recursos quando o painel for fechado
 		this._panel.onDidDispose(
@@ -100,22 +100,6 @@ class Esp32Panel {
 		}
 	}
 
-	/**
-	 * 
-	 * @returns 
-	 */
-	private _getHtmlForWebview(): string {
-		const logoPath = vscode.Uri.file(path.join(this._extensionUri.fsPath, 'media', 'espressif_logo.svg'));
-		const stylePath = vscode.Uri.file(path.join(this._extensionUri.fsPath, 'media', 'styles.css'));
-		const scriptsJS = vscode.Uri.file(path.join(this._extensionUri.fsPath, 'media', 'script.js'));
-
-		// Convert to webview URIs
-		const logoUri = this._panel.webview.asWebviewUri(logoPath);
-		const styleUri = this._panel.webview.asWebviewUri(stylePath);
-		const scriptUri = this._panel.webview.asWebviewUri(scriptsJS);
-
-		return gen_html.genChipRepresentation(esp.SupportedESP.ESP32_C3, scriptUri, styleUri, logoUri);;
-	}
 
 	/**
 	 * 
