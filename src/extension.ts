@@ -14,6 +14,31 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(disposable);
+	// Verifica se a view está visível
+	const view = vscode.window.createTreeView('esp-idf-config', {
+		treeDataProvider: new class implements vscode.TreeDataProvider<any> {
+			getTreeItem(element: any): vscode.TreeItem | Thenable<vscode.TreeItem> {
+				return element;
+			}
+			getChildren(element?: any): vscode.ProviderResult<any[]> {
+				return [];
+			}
+		}
+	});
+
+	// Executa o comando showConfig quando a view for criada
+	if (view.visible) {
+		vscode.commands.executeCommand('esp-idf-studio.showConfig');
+	}
+
+	// Adiciona um listener para quando a view se tornar visível
+	context.subscriptions.push(
+		view.onDidChangeVisibility(() => {
+			if (view.visible) {
+				vscode.commands.executeCommand('esp-idf-studio.showConfig');
+			}
+		})
+	);
 }
 
 class Esp32Panel {
@@ -100,20 +125,5 @@ class Esp32Panel {
 		}
 	}
 
-
-	/**
-	 * 
-	 * @param count 
-	 * @param position 
-	 * @returns 
-	 */
-	private _createPins(count: number, position: string): string {
-		let pins = '';
-		for (let i = 0; i < count; i++) {
-			const pinClass = position === 'bottom' ? 'esp-pin-ver' : 'esp-pin-hor';
-			pins += `<div class="esp-pin ${pinClass}" data-pin="${i}" onclick="configurePin(${i})"></div>`;
-		}
-		return pins;
-	}
 }
 export function deactivate() { }

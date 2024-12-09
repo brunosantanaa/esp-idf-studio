@@ -15,14 +15,38 @@
     "commands": [
       {
         "command": "esp-idf-studio.showConfig",
-        "title": "Show ESP32-C3 Configuration",
-        "icon": "$(circuit-board)"
+        "title": "Show Module",
+        "icon": "media/icon.svg"
       }
     ],
     "menus": {
       "commandPalette": [
         {
           "command": "esp-idf-studio.showConfig"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "esp-idf-studio.showConfig",
+          "group": "navigation"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "esp-idf-studio",
+          "title": "ESP-IDF Studio",
+          "icon": "media/icon.svg",
+          "command": "esp-idf-studio.showConfig"
+        }
+      ]
+    },
+    "views": {
+      "esp-idf-studio": [
+        {
+          "id": "esp-idf-config",
+          "name": "Configuration"
         }
       ]
     }
